@@ -60,7 +60,10 @@ public class ColumnSchema {
         calculatedColumns.add(new CalculatedColumn("Def.", "Defended Against"));
         calculatedColumns.add(new CalculatedColumn("L. Port", "Lower Port"));
         calculatedColumns.add(new CalculatedColumn("Park", "Parked"));
-        calculatedColumns.add(new CalculatedColumn("A. Crossed", "Cross the Line"));
+        calculatedColumns.add(new CalculatedColumn("Block Shot", "Blocked Shots"));
+        calculatedColumns.add(new CalculatedColumn("Eff. Secs.", "Effective Seconds"));
+        calculatedColumns.add(new CalculatedColumn("Most Freq. Shoot. Pos.", "Most Frequent Shooting Position"));
+        calculatedColumns.add(new CalculatedColumn("Loc.", "Location"));
 
         return calculatedColumns;
     }
@@ -95,6 +98,10 @@ public class ColumnSchema {
 
                 "Level",
 
+                "Blocked Shots",
+
+                "Effective Seconds",
+
                 "Teleop Inner Port",
 
                 "Teleop Outer Port",
@@ -105,8 +112,12 @@ public class ColumnSchema {
 
                 "Defended Against",
 
+                "Most Frequent Shooting Position",
+
                 "Lower Port",
                 "Auton Lower Port", "Teleop Lower Port",
+
+                "Location",
 
                 "Parked",
 
