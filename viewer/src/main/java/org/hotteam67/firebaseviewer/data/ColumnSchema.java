@@ -47,8 +47,6 @@ public class ColumnSchema {
         calculatedColumns.add(new CalculatedColumn("Out. Port", "Outer Port"));
         calculatedColumns.add(new CalculatedColumn("In. Port", "Inner Port"));
         calculatedColumns.add(new CalculatedColumn("Miss", "Misses"));
-        calculatedColumns.add(new CalculatedColumn("Rel. Acc.", "Relative Accuracy"));
-        calculatedColumns.add(new CalculatedColumn("Acc.", "Accuracy"));
         calculatedColumns.add(new CalculatedColumn("A. In. Port", "Auton Inner Port"));
         calculatedColumns.add(new CalculatedColumn("A. Out. Port", "Auton Outer Port"));
         calculatedColumns.add(new CalculatedColumn("Hang", "Climb"));
@@ -153,6 +151,32 @@ public class ColumnSchema {
         SumColumn innerPort = BuildSumColumn("Inner Port", "Teleop Inner Port","Auton Inner Port");
         SumColumn outerPort = BuildSumColumn("Outer Port", "Teleop Outer Port", "Auton Outer Port");
         SumColumn lowerPort = BuildSumColumn("Lower Port", "Teleop Lower Port", "Auton Lower Port");
+        SumColumn misses = BuildSumColumn("Miss", "Misses");
+        SumColumn climb = BuildSumColumn("Hang", "Climb");
+        SumColumn level = BuildSumColumn("Lv.", "Level");
+        SumColumn positioncontrol = BuildSumColumn("P. Control", "Position Control");
+        SumColumn rotationcontrol = BuildSumColumn("R. Control", "Rotation Control");
+        SumColumn defense = BuildSumColumn("Def.", "Defended Against");
+        SumColumn park = BuildSumColumn("Park", "Parked");
+        SumColumn blockshot = BuildSumColumn("Block Shot", "Blocked Shot");
+        SumColumn effectiveseconds = BuildSumColumn("Eff. Secs.", "Effective Seconds");
+       /* calculatedColumns.add(new CalculatedColumn("Miss", "Misses"));
+        calculatedColumns.add(new CalculatedColumn("A. In. Port", "Auton Inner Port"));
+        calculatedColumns.add(new CalculatedColumn("A. Out. Port", "Auton Outer Port"));
+        calculatedColumns.add(new CalculatedColumn("Hang", "Climb"));
+        calculatedColumns.add(new CalculatedColumn("Lv.", "Level"));
+        calculatedColumns.add(new CalculatedColumn("Tel. In. Port", "Teleop Inner Port"));
+        calculatedColumns.add(new CalculatedColumn("Tel. Out. Port", "Teleop Outer Port"));
+        calculatedColumns.add(new CalculatedColumn("P. Control", "Position Control"));
+        calculatedColumns.add(new CalculatedColumn("R. Control", "Rotation Control"));
+        calculatedColumns.add(new CalculatedColumn("Def.", "Defended Against"));
+        calculatedColumns.add(new CalculatedColumn("L. Port", "Lower Port"));
+        calculatedColumns.add(new CalculatedColumn("Park", "Parked"));
+        calculatedColumns.add(new CalculatedColumn("Block Shot", "Blocked Shots"));
+        calculatedColumns.add(new CalculatedColumn("Eff. Secs.", "Effective Seconds"));
+        calculatedColumns.add(new CalculatedColumn("Most Freq. Shoot. Pos.", "Most Frequent Shooting Position"));
+        calculatedColumns.add(new CalculatedColumn("Loc.", "Location"));
+        */
         SumColumn totalCells = new SumColumn();
         totalCells.columnName = "Total Cells";
         totalCells.columnsNames = new ArrayList<>();
@@ -183,7 +207,8 @@ public class ColumnSchema {
         */
         ArrayList<SumColumn> sumColumns = new ArrayList<>();
         // No auton hatches rn
-        addAll(sumColumns, totalCells, innerPort, outerPort, lowerPort);
+        addAll(sumColumns, totalCells, innerPort, outerPort, lowerPort, misses, climb, level, positioncontrol,
+                rotationcontrol, defense, park, blockshot, effectiveseconds);
 
         return sumColumns;
     }
