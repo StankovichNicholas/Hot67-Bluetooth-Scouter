@@ -44,24 +44,25 @@ public class ColumnSchema {
         calculatedColumns.add(new CalculatedColumn("A. Crossed", "Sandstorm Crossed The Line"));
         */
         calculatedColumns.add(new CalculatedColumn("To. Cells", "Total Cells"));
-        calculatedColumns.add(new CalculatedColumn("Out. Port", "Outer Port"));
-        calculatedColumns.add(new CalculatedColumn("In. Port", "Inner Port"));
-        calculatedColumns.add(new CalculatedColumn("Miss", "Misses"));
+        calculatedColumns.add(new CalculatedColumn("Out. Port", "Total Outer Port"));
+        calculatedColumns.add(new CalculatedColumn("In. Port", "Total Inner Port"));
+        calculatedColumns.add(new CalculatedColumn("Miss", "Teleop Misses"));
         calculatedColumns.add(new CalculatedColumn("A. In. Port", "Auton Inner Port"));
         calculatedColumns.add(new CalculatedColumn("A. Out. Port", "Auton Outer Port"));
-        calculatedColumns.add(new CalculatedColumn("Hang", "Climb"));
-        calculatedColumns.add(new CalculatedColumn("Lv.", "Level"));
+        calculatedColumns.add(new CalculatedColumn("Cross the Line", "Auton Cross the Line"));
+        calculatedColumns.add(new CalculatedColumn("Hang", "Endgame Climb"));
+        calculatedColumns.add(new CalculatedColumn("Lv.", "Endgame Level"));
         calculatedColumns.add(new CalculatedColumn("Tel. In. Port", "Teleop Inner Port"));
         calculatedColumns.add(new CalculatedColumn("Tel. Out. Port", "Teleop Outer Port"));
-        calculatedColumns.add(new CalculatedColumn("P. Control", "Position Control"));
-        calculatedColumns.add(new CalculatedColumn("R. Control", "Rotation Control"));
-        calculatedColumns.add(new CalculatedColumn("Def.", "Defended Against"));
-        calculatedColumns.add(new CalculatedColumn("L. Port", "Lower Port"));
-        calculatedColumns.add(new CalculatedColumn("Park", "Parked"));
-        calculatedColumns.add(new CalculatedColumn("Block Shot", "Blocked Shots"));
-        calculatedColumns.add(new CalculatedColumn("Eff. Secs.", "Effective Seconds"));
-        calculatedColumns.add(new CalculatedColumn("Most Freq. Shoot. Pos.", "Most Frequent Shooting Position"));
-        calculatedColumns.add(new CalculatedColumn("Loc.", "Location"));
+        calculatedColumns.add(new CalculatedColumn("P. Control", "Teleop Position Control"));
+        calculatedColumns.add(new CalculatedColumn("R. Control", "Teleop Rotation Control"));
+        calculatedColumns.add(new CalculatedColumn("Def.", "Defense Defended Against"));
+        calculatedColumns.add(new CalculatedColumn("L. Port", "Total Lower Port"));
+        calculatedColumns.add(new CalculatedColumn("Park", "Endgame Parked"));
+        calculatedColumns.add(new CalculatedColumn("Block Shot", "Defense Blocked Shots"));
+        calculatedColumns.add(new CalculatedColumn("Eff. Secs.", "Defense Effective Seconds"));
+        calculatedColumns.add(new CalculatedColumn("Most Freq. Shoot. Pos.", "Teleop Most Frequent Shooting Position"));
+        calculatedColumns.add(new CalculatedColumn("Climb. Pos.", "Endgame Climbing Position"));
 
         return calculatedColumns;
     }
@@ -78,63 +79,50 @@ public class ColumnSchema {
     {
         return new ArrayList<>(Arrays.asList(
                 "Total Cells",
-                "Inner Port", "Outer Port", "Lower Port",
+                "Total Inner Port", "Total Outer Port", "Total Lower Port",
 
-                "Outer Port",
+                "Total Outer Port",
                 "Auton Outer Port", "Teleop Outer Port",
 
-                "Inner Port",
+                "Total Inner Port",
                 "Auton Inner Port", "Teleop Inner Port",
 
-                "Misses",
+                "Teleop Misses",
 
                 "Auton Inner Port",
 
                 "Auton Outer Port",
 
-                "Climb",
+                "Endgame Climb",
 
-                "Level",
+                "Endgame Level",
 
-                "Blocked Shots",
+                "Defense Blocked Shots",
 
-                "Effective Seconds",
+                "Defense Effective Seconds",
 
                 "Teleop Inner Port",
 
                 "Teleop Outer Port",
 
-                "Position Control",
+                "Teleop Position Control",
 
-                "Rotation Control",
+                "Teleop Rotation Control",
 
-                "Defended Against",
+                "Defense Defended Against",
 
-                "Most Frequent Shooting Position",
+                "Teleop Most Frequent Shooting Position",
 
-                "Lower Port",
+                "Total Lower Port",
                 "Auton Lower Port", "Teleop Lower Port",
 
-                "Location",
+                "Endgame Climbing Position",
 
-                "Parked",
+                "Engame Parked",
 
-                "Cross the Line"
+                "Auton Cross the Line"
 
-                /*
-                "Sandstorm Cargo Cargo Ship", "Sandstorm Cargo Left Rocket Low", "Sandstorm Cargo Left Rocket Middle",
-                "Sandstorm Cargo Left Rocket High", "Sandstorm Cargo Right Rocket Low", "Sandstorm Cargo Right Rocket Middle",
-                "Sandstorm Cargo Right Rocket High",
-
-                "Sandstorm Hatch Panels Cargo Ship",
-                "Sandstorm Hatch Panels Left Rocket Low", "Sandstorm Hatch Panels Left Rocket Middle", "Sandstorm Hatch Panels Left Rocket High",
-                "Sandstorm Hatch Panels Right Rocket Low", "Sandstorm Hatch Panels Right Rocket Middle", "Sandstorm Hatch Panels Right Rocket High",
-
-                "Teleop Cargo Cargo Ship",
-                "Teleop Cargo Rocket Low", "Teleop Cargo Rocket Middle", "Teleop Cargo Rocket High",
-
-                "Teleop Hatches Cargo Ship",
-                "Teleop Hatches Rocket Low", "Teleop Hatches Rocket Middle", "Teleop Hatches Rocket High"*/));
+        ));
 
     }
 
@@ -148,9 +136,10 @@ public class ColumnSchema {
     public static List<SumColumn> SumColumns() {
 
 
-        SumColumn innerPort = BuildSumColumn("Inner Port", "Teleop Inner Port","Auton Inner Port");
-        SumColumn outerPort = BuildSumColumn("Outer Port", "Teleop Outer Port", "Auton Outer Port");
-        SumColumn lowerPort = BuildSumColumn("Lower Port", "Teleop Lower Port", "Auton Lower Port");
+        SumColumn innerPort = BuildSumColumn("Total Inner Port", "Teleop Inner Port","Auton Inner Port");
+        SumColumn outerPort = BuildSumColumn("Total Outer Port", "Teleop Outer Port", "Auton Outer Port");
+        SumColumn lowerPort = BuildSumColumn("Total Lower Port", "Teleop Lower Port", "Auton Lower Port");
+        /*
         SumColumn misses = BuildSumColumn("Miss", "Misses");
         SumColumn climb = BuildSumColumn("Hang", "Climb");
         SumColumn level = BuildSumColumn("Lv.", "Level");
@@ -160,22 +149,6 @@ public class ColumnSchema {
         SumColumn park = BuildSumColumn("Park", "Parked");
         SumColumn blockshot = BuildSumColumn("Block Shot", "Blocked Shot");
         SumColumn effectiveseconds = BuildSumColumn("Eff. Secs.", "Effective Seconds");
-       /* calculatedColumns.add(new CalculatedColumn("Miss", "Misses"));
-        calculatedColumns.add(new CalculatedColumn("A. In. Port", "Auton Inner Port"));
-        calculatedColumns.add(new CalculatedColumn("A. Out. Port", "Auton Outer Port"));
-        calculatedColumns.add(new CalculatedColumn("Hang", "Climb"));
-        calculatedColumns.add(new CalculatedColumn("Lv.", "Level"));
-        calculatedColumns.add(new CalculatedColumn("Tel. In. Port", "Teleop Inner Port"));
-        calculatedColumns.add(new CalculatedColumn("Tel. Out. Port", "Teleop Outer Port"));
-        calculatedColumns.add(new CalculatedColumn("P. Control", "Position Control"));
-        calculatedColumns.add(new CalculatedColumn("R. Control", "Rotation Control"));
-        calculatedColumns.add(new CalculatedColumn("Def.", "Defended Against"));
-        calculatedColumns.add(new CalculatedColumn("L. Port", "Lower Port"));
-        calculatedColumns.add(new CalculatedColumn("Park", "Parked"));
-        calculatedColumns.add(new CalculatedColumn("Block Shot", "Blocked Shots"));
-        calculatedColumns.add(new CalculatedColumn("Eff. Secs.", "Effective Seconds"));
-        calculatedColumns.add(new CalculatedColumn("Most Freq. Shoot. Pos.", "Most Frequent Shooting Position"));
-        calculatedColumns.add(new CalculatedColumn("Loc.", "Location"));
         */
         SumColumn totalCells = new SumColumn();
         totalCells.columnName = "Total Cells";
@@ -184,31 +157,10 @@ public class ColumnSchema {
         totalCells.columnsNames.addAll(outerPort.columnsNames);
         totalCells.columnsNames.addAll(lowerPort.columnsNames);
 
-        /*
-        SumColumn autonHatches = BuildSumColumn("Auton Hatch Panels", "Sandstorm Hatch Panels Cargo Ship",
-                "Sandstorm Hatch Panels Left Rocket Low", "Sandstorm Hatch Panels Left Rocket Middle", "Sandstorm Hatch Panels Left Rocket High",
-                "Sandstorm Hatch Panels Right Rocket Low", "Sandstorm Hatch Panels Right Rocket Middle", "Sandstorm Hatch Panels Right Rocket High");
-        SumColumn teleopHatches = BuildSumColumn("Teleop Hatch Panels", "Teleop Hatches Cargo Ship",
-                "Teleop Hatches Rocket Low", "Teleop Hatches Rocket Middle", "Teleop Hatches Rocket High");
-        SumColumn totalHighHatches = BuildSumColumn("Total Hatch Panels High",
-                "Teleop Hatches Rocket High",
-                "Auton Hatch Panels Left Rocket High", "Auton Hatch Panels Right Rocket High");
-        SumColumn totalHatches = new SumColumn();
-        totalHatches.columnName = "Total Hatch Panels";
-        totalHatches.columnsNames = new ArrayList<>();
-        totalHatches.columnsNames.addAll(teleopHatches.columnsNames);
-        totalHatches.columnsNames.addAll(autonHatches.columnsNames);
 
-        SumColumn totalGamePieces = new SumColumn();
-        totalGamePieces.columnName = "Total Game Pieces";
-        totalGamePieces.columnsNames = new ArrayList<>();
-        totalGamePieces.columnsNames.addAll(totalHatches.columnsNames);
-        totalGamePieces.columnsNames.addAll(totalCargo.columnsNames);
-        */
         ArrayList<SumColumn> sumColumns = new ArrayList<>();
         // No auton hatches rn
-        addAll(sumColumns, totalCells, innerPort, outerPort, lowerPort, misses, climb, level, positioncontrol,
-                rotationcontrol, defense, park, blockshot, effectiveseconds);
+        addAll(sumColumns, totalCells, innerPort, outerPort, lowerPort);
 
         return sumColumns;
     }
